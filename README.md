@@ -1,6 +1,6 @@
-# Social Streamer Game
+# TextTrek: The Wanderer's Chronicles
 
-Welcome to Social Streamer Game, a unique social media aggregator application that blends engaging text-based gameplay with social media interaction. Our platform allows users to play both multiplayer and single-player games, where the gameplay is endlessly customized for each player by intelligent AI agents. As players engage with the game and interact with others, they can see an increase in their followers, enhancing their social presence without forced interactions.
+Welcome to TextTrek, a unique social media aggregator application that blends engaging text-based gameplay with social media interaction. Our platform allows users to play both multiplayer and single-player games, where the gameplay is endlessly customized for each player by intelligent AI agents. As players engage with the game and interact with others, they can see an increase in their followers, enhancing their social presence without forced interactions.
 
 ## Features
 

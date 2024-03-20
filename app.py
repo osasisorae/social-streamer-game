@@ -2,7 +2,7 @@ import streamlit as st
 from game_narrative import NarrativeEngine
 from content_library import start_scenarios
 
-st.title('Social Media Aggregator Game')
+st.title("TextTrek: The Wanderer's Chronicles")
 
 game = NarrativeEngine()
 scenarios = [ key for key, _ in start_scenarios.items()]
