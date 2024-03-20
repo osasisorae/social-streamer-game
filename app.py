@@ -11,21 +11,26 @@ option = st.selectbox(
     'Choose start scenario',
      scenarios)
 
-if option:
-    context = start_scenarios[option]
-    st.write(context)
+if 'context' not in st.session_state:
+    st.session_state.context = None
+    
+if option and st.session_state.context is None:
+    st.session_state.context = start_scenarios[option]
+    st.write(st.session_state.context)
 
 action = st.chat_input("what action would you like to take?")
-if action:
+
+if action and st.session_state.context:
     response = game.generate_creative_response(
         action=action,
-        context=context)
+        context=st.session_state.context)
     
+    print(f"Context: {st.session_state.context}\nAction: {action}")
+    
+
     st.write_stream(game.stream_text_generator(response['narrative']))
-    context = response['action_effect']
-    # st.write_stream(game.stream_text_generator(response['action_effect']))
-    # st.write({"action": action, "context": context})
-    # st.write(response)
-# Sidebar for game stats (this could dynamically update based on game progress)
+    st.session_state.context = response['action_effect']
+
+
 st.sidebar.markdown("### Game Stats")
 st.sidebar.markdown("**Followers:** 100")  # Placeholder for follower count

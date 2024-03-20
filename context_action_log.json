@@ -1,0 +1,18 @@
+[
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "pluck a flower"
+    },
+    {
+        "context": "The act of plucking the flower has caused a noticeable change in the garden's ambiance. The once bright and lively environment now carries a hint of melancholy. This action may have triggered a response from the garden, hinting at its magical nature and possibly alerting its guardians or altering its behavior.",
+        "action": "I eat the flower in my hand"
+    },
+    {
+        "context": "Consuming the flower has imbued you with a mysterious energy and has caused a disturbance in the magical balance of the garden. The guardians are now on alert, and the garden's ambiance has shifted to one of caution and wariness.",
+        "action": "I look for a door"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "pluck a flower"
+    }
+]
