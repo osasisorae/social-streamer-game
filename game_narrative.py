@@ -61,16 +61,31 @@ class NarrativeEngine:
         
         return response
     
-    def stream_text_generator(self, input_text, chunk_size=1):
-        """
-        A generator function that streams a string in chunks.
-
-        :param input_text: The text to be streamed.
-        :param chunk_size: The number of characters to yield in each chunk.
-        """
-        for i in range(0, len(input_text), chunk_size):
-            yield input_text[i:i + chunk_size]
+    def store_messages_to_file(self, file_path: str, message: dict):
+        # Check if the file exists and has content; if so, load existing data
+        if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+            with open(file_path, 'r') as file:
+                try:
+                    existing_data = json.load(file)
+                except json.JSONDecodeError:
+                    existing_data = []
+        else:
+            existing_data = []
             
+        # Append the new data
+        existing_data.append(message)
+        
+        # Write the updated data back to the file
+        with open(file_path, 'w') as file:
+            json.dump(existing_data, file, indent=4)
+            
+    def load_messages_from_file(self, file_path):
+        try: 
+            with open(file_path, 'r') as file:
+                return json.load(file)
+        except FileNotFoundError:
+            return []
+        
     def store_context_action_to_file(self, file_path, context, action):
         """
         Store and append context and action pairs in a JSON file.

@@ -5,6 +5,9 @@ import time
 
 st.title("TextTrek: The Wanderer's Chronicles")
 
+user_email = "osasisorae@gmail.com"
+user_id = "54qtrfs8dguh23489"
+
 def response_generator(response: str):
     for word in response.split():
         yield word + " "
@@ -19,33 +22,43 @@ with expand:
 expand.write(intro)
 
 # Initialize chat history
-if "messages" not in st.session_state:
+messages = game.load_messages_from_file(f"{user_id}_{user_email}.json")
+print(type(messages))
+print(messages)
+if len(messages) > 0:
+    st.session_state.messages = messages
+    # initialize context
+    st.session_state.context = messages[-1]['content']
+else:
     st.session_state.messages = []
-    
-if 'context' not in st.session_state:
-    st.session_state.context = None
-        
-print(scenario)
-start_context = start_scenarios[scenario]
-st.session_state.context = start_context
+    start_context = start_scenarios[scenario]
+    st.session_state.context = start_context
 
-if scenario and start_context:
+if scenario and st.session_state.context:
     # Display assistant response in chat message container
-    if st.session_state.context:
-        with st.chat_message("assistant"):
-            response = st.write_stream(response_generator(st.session_state.context))
+    if start_scenarios[scenario] == st.session_state.context:
+        st.write_stream(response_generator(st.session_state.context))
     else:
-        with st.chat_message("assistant"):
-            response = st.write_stream(response_generator(start_context))
-        
+        # print(st.session_state.context)
+        st.write_stream(response_generator(scenario))
+
 # Accept user input
 if prompt := st.chat_input("What action would you like to take?"):
     
     response = game.generate_creative_response(
         action=prompt,
         context=st.session_state.context)
-    st.session_state.messages.append({"role": "assistant", "content": response['narrative'], "name": scenario})
-    st.session_state.messages.append({"role": "user", "content": response['action_effect'], "name": scenario, "action": prompt})
+    
+    # Update chat history
+    assistant_msg = {"role": "assistant", "content": response['narrative'], "name": scenario}
+    user_msg = {"role": "user", "content": response['action_effect'], "name": scenario, "action": prompt}
+    
+    game.store_messages_to_file(f"{user_id}_{user_email}.json", assistant_msg)
+    game.store_messages_to_file(f"{user_id}_{user_email}.json", user_msg)
+    
+    
+    st.session_state.messages.append(assistant_msg)
+    st.session_state.messages.append(user_msg)
     st.session_state.context = response['action_effect']
     
 
@@ -53,6 +66,7 @@ for message in st.session_state.messages:
     if message['name'] == scenario:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
+    st.divider()
 
 print(st.session_state.messages)
 
