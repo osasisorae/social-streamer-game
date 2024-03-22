@@ -11,4 +11,28 @@ start_scenarios = {
     "haunted_mansion" : "The grand doors of a seemingly abandoned mansion creak open before you, inviting you into its dimly lit halls filled with whispers of the past."
 }
 
+intro = """
+## Welcome to TextTrek: The Wanderer's Chronicles!
+
+Embark on an extraordinary journey where your words shape the universe. In TextTrek, every choice you make weaves the path of your adventure, uncovering mysteries and forging destinies across realms untold.
+
+### How It Works:
+
+- Begin Your Journey: Start in one of many unique scenarios—be it a mysterious garden, an ancient ruin, or the depths of an underwater city. Your starting point is the first step into a world brimming with possibilities.
+- Drive the Narrative: Through simple text commands, interact with the world. Each decision you make unfolds new paths, encounters, and stories. Will you explore the echoing halls of a haunted mansion or navigate the technicolor streets of a futuristic metropolis?
+- Uncover Mysteries and Forge Alliances: Your actions determine not just your fate but also the fate of the worlds you explore. Solve ancient riddles, battle foes, or form alliances with the characters you meet.
+- Collect Treasures and Secrets: Every adventure holds secrets waiting to be discovered. Find hidden treasures, uncover lore, and learn the true nature of the realms you wander.
+
+### Benefits of Playing TextTrek:
+
+- Boost Creativity and Imagination: Let your imagination soar as you create stories and solve problems in ways only you can envision.
+- Enhance Decision-Making Skills: Every choice has a consequence. Hone your decision-making skills as you navigate the complexities of each world.
+- Learn While You Play: Our adventures are sprinkled with bits of knowledge, history, and trivia. Discover, learn, and grow.
+- Connect and Share: Share your unique journeys with friends and compare narratives. No two adventures are the same!
+
+Prepare to set forth on a voyage where the boundaries are as limitless as your imagination. Welcome to TextTrek, where every word is a step into the unknown.
+
+Your adventure awaits...
+"""
+
 

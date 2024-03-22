@@ -14,5 +14,45 @@
     {
         "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
         "action": "pluck a flower"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "pluck a flower"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "pluck a flower"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "i eat the flower and look for an exit"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "pluck a flower"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "pluck a flower"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "I'll eat the flower and whisper a sooting sound"
+    },
+    {
+        "context": "You find yourself in the middle of a mysterious, overgrown garden. The air is thick with the scent of unknown flowers.",
+        "action": "pluck a flower"
+    },
+    {
+        "context": "Encased in a bubble of air, you gaze out at the vibrant life of an underwater city, its bioluminescent lights twinkling like stars in the ocean's depths.",
+        "action": "swim to the surface"
+    },
+    {
+        "context": "An enchanted forest surrounds you, whispering secrets of the magical creatures that dwell within. The trees seem to watch and guide your every step.",
+        "action": "I look for the tallest and easiest tree to climb and I climb it."
+    },
+    {
+        "context": "An enchanted forest surrounds you, whispering secrets of the magical creatures that dwell within. The trees seem to watch and guide your every step.",
+        "action": "climb down and head over to the stream"
     }
 ]
