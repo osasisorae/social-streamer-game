@@ -22,7 +22,7 @@ with expand:
 expand.write(intro)
 
 # Initialize chat history
-messages = game.load_messages_from_file(f"{user_id}_{user_email}.json")
+messages = game.load_messages_from_file(f"{user_id}_{user_email}.json", scenario)
 print(type(messages))
 print(messages)
 if len(messages) > 0:
@@ -46,6 +46,7 @@ if scenario and st.session_state.context:
 if prompt := st.chat_input("What action would you like to take?"):
     
     response = game.generate_creative_response(
+        file_path=f"{user_id}_{user_email}.json",
         action=prompt,
         context=st.session_state.context)
     

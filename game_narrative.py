@@ -43,8 +43,7 @@ class NarrativeEngine:
         self.chain = self.prompt | self.model | self.parser
 
     
-    def generate_creative_response(self, action, context):
-        file_path = 'context_action_log.json'
+    def generate_creative_response(self, file_path, action, context):
         # Load the previous conversation context as a narrative string
         previous_conversation = self.load_context_action_from_file(file_path)
         
@@ -54,10 +53,7 @@ class NarrativeEngine:
             "action": action,
             "previous_conversation": previous_conversation
         })
-        
-        # response = self.chain.invoke({"context": context, "action": action})
-        
-        self.store_context_action_to_file(file_path, context, action)
+
         
         return response
     
@@ -79,10 +75,12 @@ class NarrativeEngine:
         with open(file_path, 'w') as file:
             json.dump(existing_data, file, indent=4)
             
-    def load_messages_from_file(self, file_path):
+    def load_messages_from_file(self, file_path, name):
         try: 
             with open(file_path, 'r') as file:
-                return json.load(file)
+                data = json.load(file)
+                return [obj for obj in data if obj.get('name') == name]
+            
         except FileNotFoundError:
             return []
         
@@ -114,22 +112,17 @@ class NarrativeEngine:
             json.dump(existing_data, file, indent=4)
             
     def load_context_action_from_file(self, file_path):
-        jq_schema = '.'
-        loader = JSONLoader(file_path=file_path, jq_schema=jq_schema, text_content=False)
-        documents = loader.load()
-        text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-        texts = text_splitter.split_documents(documents)
-        embeddings = OpenAIEmbeddings()
-        db = FAISS.from_documents(texts, embeddings)
-        retriever = db.as_retriever()
-        docs = retriever.get_relevant_documents("What is the summary of the story")
-        page_content = docs[0].page_content
-        return page_content
-
-    
-# action = "climb up a tree"
-# context = "You wake up in a forest, surrounded by towering trees and the sound of distant wildlife."
-
-# response = chain.invoke({"context": context, "action": action})
-# print(type(response))
-# print(response)
+        try:
+            jq_schema = '.'
+            loader = JSONLoader(file_path=file_path, jq_schema=jq_schema, text_content=False)
+            documents = loader.load()
+            text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+            texts = text_splitter.split_documents(documents)
+            embeddings = OpenAIEmbeddings()
+            db = FAISS.from_documents(texts, embeddings)
+            retriever = db.as_retriever()
+            docs = retriever.get_relevant_documents("What is the summary of the story")
+            page_content = docs[0].page_content
+            return page_content
+        except FileNotFoundError:
+            return ""
